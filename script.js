@@ -50,7 +50,7 @@ document.getElementById('btn-whatsapp').addEventListener('click', function(e) {
     btn.disabled = true; // Evita que hagan doble clic rápido
 
     // ACÁ DEBÉS PONER EL NÚMERO DE TELÉFONO
-    const telefono = "5492944800799"; 
+    const telefono = "5492944211682"; 
     
     const v = (id) => document.getElementById(id).value.trim() || "-";
     

@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Cartel de Obra - Corralón Comarca Andina</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="container">
+    <div class="logo-container">
+        <img src="https://corraloncomarca.com.ar/web2022/wp-content/uploads/2022/05/logo.png" alt="Corralón Comarca Andina">
+    </div>
+    
+    <h1>Generador de Datos - Cartel de Obra</h1>
+    
+    <form id="cartelForm">
+        <!-- SECCIÓN 1: PROFESIONALES -->
+        <div class="section-title">1. Profesionales y Responsables</div>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Proyectista (Nombre y Apellido)</label>
+                <input type="text" id="proy_nombre" placeholder="Ej: Juan Pérez">
+                <label class="sub-label">Título y Matrícula</label>
+                <input type="text" id="proy_titulo" placeholder="Ej: Arq. Mat. 1234">
+                <label class="sub-label">Domicilio</label>
+                <input type="text" id="proy_dom" placeholder="Ej: Av. San Martín 100">
+            </div>
+
+            <div class="form-group">
+                <label>Constructor (Nombre / Razón Social)</label>
+                <input type="text" id="cons_nombre" placeholder="Ej: Constructora SRL">
+                <label class="sub-label">Título y Matrícula</label>
+                <input type="text" id="cons_titulo" placeholder="Ej: Ing. Mat. 5678">
+                <label class="sub-label">Domicilio</label>
+                <input type="text" id="cons_dom" placeholder="Ej: Belgrano 450">
+            </div>
+
+            <div class="form-group">
+                <label>Director de Obra (Nombre y Apellido)</label>
+                <input type="text" id="dir_nombre" placeholder="Ej: María Gómez">
+                <label class="sub-label">Título y Matrícula</label>
+                <input type="text" id="dir_titulo" placeholder="Ej: Arq. Mat. 9876">
+                <label class="sub-label">Domicilio</label>
+                <input type="text" id="dir_dom" placeholder="Ej: Mitre 200">
+            </div>
+
+            <div class="form-group">
+                <label>Comitente (Nombre y Apellido)</label>
+                <input type="text" id="com_nombre" placeholder="Ej: Carlos López">
+                <label class="sub-label" style="visibility:hidden;">Espacio</label>
+                <input type="text" style="visibility:hidden; border:none; background:none;" disabled>
+                <label class="sub-label">Domicilio</label>
+                <input type="text" id="com_dom" placeholder="Ej: Los Pioneros s/n">
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: DATOS MUNICIPALES -->
+        <div class="section-title">2. Datos Municipales</div>
+        <div class="form-grid-2">
+            <div class="form-group">
+                <label>Permiso de Edificación (Perm. Edif.)</label>
+                <input type="text" id="perm_edif" placeholder="Ej: PPO/PP - 00/000/00">
+            </div>
+            <div class="form-group">
+                <label>Uso Preventivo (Uso Prev.)</label>
+                <input type="text" id="uso_prev" placeholder="Ej: VIVIENDA NUEVA / REFORMA">
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: NOMENCLATURA CATASTRAL -->
+        <div class="section-title">3. Nomenclatura Catastral</div>
+        <div class="form-grid-5">
+            <div class="form-group"><label>Circ.</label><input type="text" id="circ"></div>
+            <div class="form-group"><label>Sector</label><input type="text" id="sector"></div>
+            <div class="form-group"><label>Mzo./Ch./Mza.</label><input type="text" id="mza"></div>
+            <div class="form-group"><label>Parcela</label><input type="text" id="parcela"></div>
+            <div class="form-group"><label>Zona</label><input type="text" id="zona"></div>
+        </div>
+    </form>
+
+    <!-- VISTA PREVIA TIPO CARTEL -->
+    <div class="section-title" style="margin-top: 40px;">Vista Previa del Cartel</div>
+    <div class="preview-box">
+        <div class="preview-row">
+            <div class="preview-cell">
+                <strong>PROYECTISTA</strong><br>
+                <span id="v_proy_nombre">Nombre y apellido</span><br>
+                <span id="v_proy_titulo">Título y matrícula prof.</span><br>
+                <span id="v_proy_dom">Domicilio</span>
+            </div>
+            <div class="preview-cell">
+                <strong>CONSTRUCTOR</strong><br>
+                <span id="v_cons_nombre">Nombre y apellido/Razón S.</span><br>
+                <span id="v_cons_titulo">Título y matrícula</span><br>
+                <span id="v_cons_dom">Domicilio</span>
+            </div>
+        </div>
+        <div class="preview-row">
+            <div class="preview-cell">
+                <strong>DIRECTOR DE OBRA</strong><br>
+                <span id="v_dir_nombre">Nombre y apellido</span><br>
+                <span id="v_dir_titulo">Título y matrícula prof.</span><br>
+                <span id="v_dir_dom">Domicilio</span>
+            </div>
+            <div class="preview-cell">
+                <strong>COMITENTE</strong><br>
+                <span id="v_com_nombre">Nombre y apellido</span><br>
+                <span id="v_com_dom">Domicilio</span>
+            </div>
+        </div>
+        <div class="preview-row">
+            <div class="preview-cell">
+                <strong>PERM. EDIF.</strong><br>
+                <span id="v_perm">PPO/PP - 00/000/00</span>
+            </div>
+            <div class="preview-cell">
+                <strong>USO PREV.:</strong><br>
+                <span id="v_uso">VIVIENDA NUEVA/REFORMA</span>
+            </div>
+        </div>
+        <div class="preview-row preview-footer-row">
+            <div>CIRC. <span id="v_circ">0</span></div>
+            <div>SECTOR <span id="v_sector">0</span></div>
+            <div>MZO./CH./MZA. <span id="v_mza">0</span></div>
+            <div>PARCELA <span id="v_parcela">0</span></div>
+            <div>ZONA <span id="v_zona">0 - XXXXXXX</span></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 Corralón Comarca Andina. Experiencia, responsabilidad y servicio.
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -189,3 +189,18 @@ input[type="text"]:focus {
 .btn-wsp:hover {
     background-color: #128C7E;
 }
+
+/* Estilo para la leyenda del botón de WhatsApp */
+.wsp-hint {
+    font-size: 13px;
+    color: #555;
+    margin-top: 12px;
+    margin-bottom: 0;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+}
+.wsp-hint strong {
+    color: var(--primary); /* Usa el rojo del corralón para resaltar */
+}

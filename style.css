@@ -1,1 +1,145 @@
+:root {
+    --primary: #d61f26; 
+    --dark: #4a4a4a;    
+    --light: #f4f4f4;
+    --white: #ffffff;
+    --border: #cccccc;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.container {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+}
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.logo-container img {
+    max-height: 80px;
+    max-width: 100%;
+    object-fit: contain;
+}
+h1 {
+    text-align: center;
+    color: var(--dark);
+    margin-top: 0;
+    font-size: 20px;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary);
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.form-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: var(--dark);
+}
+.sub-label {
+    font-size: 11px;
+    color: #666;
+    margin-top: 4px;
+    font-weight: normal;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    color: var(--dark);
+}
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 4px rgba(214, 31, 38, 0.3);
+}
 
+/* Estilos de la Vista Previa tipo Cartel de Obra */
+.preview-box {
+    border: 4px solid #000;
+    background: #fff;
+    color: #000;
+    font-family: Arial, sans-serif;
+    margin-top: 15px;
+}
+.preview-row {
+    display: flex;
+    border-bottom: 3px solid #000;
+}
+.preview-cell {
+    flex: 1;
+    padding: 10px;
+    border-right: 3px solid #000;
+    font-size: 12px;
+    line-height: 1.4;
+}
+.preview-cell:last-child {
+    border-right: none;
+}
+.preview-cell strong {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 4px;
+}
+.preview-cell span {
+    color: #555;
+}
+.preview-footer-row {
+    display: flex;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    justify-content: space-between;
+    background: #fff;
+    border-bottom: none;
+}
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: #777;
+}

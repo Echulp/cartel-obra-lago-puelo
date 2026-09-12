@@ -143,3 +143,29 @@ input[type="text"]:focus {
     font-size: 13px;
     color: #777;
 }
+
+/* --- ADAPTACIÓN PARA CELULARES --- */
+@media (max-width: 600px) {
+    .form-grid, .form-grid-2, .form-grid-5 {
+        grid-template-columns: 1fr; /* Pone todo en 1 sola columna en celulares */
+    }
+    
+    .preview-row {
+        flex-direction: column; /* Apila los cuadros del cartel hacia abajo */
+    }
+    
+    .preview-cell {
+        border-right: none;
+        border-bottom: 3px solid #000;
+    }
+    
+    .preview-cell:last-child {
+        border-bottom: none;
+    }
+    
+    .preview-footer-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+}

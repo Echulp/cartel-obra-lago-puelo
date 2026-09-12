@@ -41,15 +41,20 @@ bindData('zona', 'v_zona', '0 - XXXXXXX');
 
 // --- LÓGICA PARA ENVIAR POR WHATSAPP Y DESCARGAR IMAGEN ---
 document.getElementById('btn-whatsapp').addEventListener('click', function(e) {
-    e.preventDefault(); // Evita que la página se recargue
+    e.preventDefault();
+
+    // El botón cambia de texto para avisar que está procesando
+    const btn = document.getElementById('btn-whatsapp');
+    const textoOriginal = btn.textContent;
+    btn.textContent = "Generando imagen...";
+    btn.disabled = true; // Evita que hagan doble clic rápido
 
     // ACÁ DEBÉS PONER EL NÚMERO DE TELÉFONO
-    const telefono = "5490000000000"; 
+    const telefono = "5492944625947"; 
     
-    // Función cortita para obtener el valor o poner un "-"
     const v = (id) => document.getElementById(id).value.trim() || "-";
     
-    // Armado del mensaje de texto
+    // Armado del mensaje
     let texto = "*NUEVO CARTEL DE OBRA*\n\n";
     texto += "*PROYECTISTA*\nNombre: " + v('proy_nombre') + "\nMatrícula: " + v('proy_titulo') + "\nDomicilio: " + v('proy_dom') + "\n\n";
     texto += "*CONSTRUCTOR*\nNombre: " + v('cons_nombre') + "\nMatrícula: " + v('cons_titulo') + "\nDomicilio: " + v('cons_dom') + "\n\n";
@@ -58,18 +63,34 @@ document.getElementById('btn-whatsapp').addEventListener('click', function(e) {
     texto += "*DATOS MUNICIPALES*\nPermiso: " + v('perm_edif') + "\nUso: " + v('uso_prev') + "\n\n";
     texto += "*NOMENCLATURA CATASTRAL*\nCirc: " + v('circ') + " | Sector: " + v('sector') + " | Mza: " + v('mza') + " | Parcela: " + v('parcela') + " | Zona: " + v('zona');
 
-    // Seleccionamos la caja de la vista previa del cartel
     const cartelPreview = document.querySelector('.preview-box');
 
-    // Le sacamos la "foto" al cartel
+    // Generar la imagen
     html2canvas(cartelPreview).then(canvas => {
-        // 1. Descargamos la foto automáticamente
+        // 1. Crear la descarga obligando a Chrome a detectarla
         let enlace = document.createElement('a');
         enlace.download = 'Cartel_Obra_Comarca.png';
         enlace.href = canvas.toDataURL('image/png');
-        enlace.click();
+        document.body.appendChild(enlace); // Lo agregamos al HTML oculto
+        enlace.click(); // Forzamos el clic
+        document.body.removeChild(enlace); // Lo borramos para limpiar
 
-        // 2. Abrimos WhatsApp con el texto listo
+        // 2. Restaurar el botón
+        btn.textContent = textoOriginal;
+        btn.disabled = false;
+
+        // 3. Abrir WhatsApp con un retraso de 500 milisegundos para que no choque con la descarga
+        const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
+        setTimeout(() => {
+            window.open(url, '_blank');
+        }, 500);
+
+    }).catch(error => {
+        // Por si llega a fallar la imagen, que al menos mande el texto
+        console.error("Error al crear la imagen:", error);
+        btn.textContent = textoOriginal;
+        btn.disabled = false;
+        
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
         window.open(url, '_blank');
     });
